@@ -6,11 +6,11 @@ import time
 
 interV = 30
 looper = False
+print(f"Welcome to SMS forwarder by Clicks and Bits")
 
 
 def smsforward():
     global looper
-    print(f"Welcome to SMS forwarder by Clicks and Bits")
 
     lastSMS = datetime.datetime.now()
     tmpFile = "tmpLastTime.txt"
