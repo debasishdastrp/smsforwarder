@@ -5,7 +5,7 @@ import os.path
 import time
 import re
 
-interV = 159862773881  # Script repeat interval in seconds
+interV = 15  # Script repeat interval in seconds
 looper = False  # variable for deciding looping mechanisam
 print(f"Welcome to SMS forwarder v:1.1 by")
 print('''
@@ -116,7 +116,7 @@ def smsforward(looping=False):
 
 
 # This function will remove all text but keeping numeric OTPs or verification codes only
-def getnumbersonly(msg): 
+def getnumbersonly(msg):
     array = re.findall(r'[0-9]+', str)
     newmsg = ""
     for i in array:
