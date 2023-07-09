@@ -1,0 +1,8 @@
+
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+*.xml
+*.iml
+*.txt
+main.py
+SMSforwarder_pro.py

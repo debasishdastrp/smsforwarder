@@ -3,7 +3,6 @@ import json
 import datetime
 import os.path
 import time
-import re
 
 interV = 15  # Script repeat interval in seconds
 looper = False  # variable for deciding looping mechanisam
@@ -109,19 +108,11 @@ def smsforward(looping=False):
                     print(f"{f} found")
                     for m in mnumber_s:
                         print(f"Forwarding to {m}")
-                        resp = os.popen(f"termux-sms-send -n {m} {getnumbersonly(j['body'])}")  # forwarding sms to predefined mobile number(s)
+                        resp = os.popen(f"termux-sms-send -n {m} {j['body']}")  # forwarding sms to predefined mobile number(s)
                         tfile = open(tmpFile, "w")
                         tfile.write(j['received'])
                         tfile.close()
 
-
-# This function will remove all text but keeping numeric OTPs or verification codes only
-def getnumbersonly(msg):
-    arr= re.findall(r'[0-9]+', msg)
-    newmsg = ""
-    for i in arr:
-        newmsg = newmsg + i + ", "
-    return newmsg
 
 # calling sms forward function for the first time
 smsforward()
