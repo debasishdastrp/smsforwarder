@@ -49,11 +49,13 @@ def smsforward(looping=False):
     if not os.path.exists(cfgFile):
         # file not found. creating a new configuration file
         cfile = open(cfgFile, "a")
-        filters = input("Please enter filters separated by ',' : ")
+        filters = input(f"{bcolors.BOLD}Please enter keyword filter(s) separated by comma (',') : {bcolors.ENDC}")
         filter_s = filters.split(",")
         cfile.write(filters.lower())
         cfile.write("\n")
-        mnumbers = input("Please enter mobile numbers separated by ',' : ")
+        print("")
+        print("")
+        mnumbers = input(f"{bcolors.BOLD}Please enter mobile number(s) separated by comma (',') : {bcolors.ENDC}")
         mnumber_s = mnumbers.split(",")
         cfile.write(mnumbers)
         cfile.close()
@@ -61,11 +63,12 @@ def smsforward(looping=False):
             # configuration file is already there. reading configurations
         rst = "1"
         if not looping:
-            print(f"""{bcolors.OKGREEN}Old configuration file found! What do You want to do?{bcolors.ENDC}
-                1) Continue with old settings
-                2) Remove old settings and start afresh""")
+            print(f"""{bcolors.BOLD}Old configuration file found! What do You want to do?{bcolors.ENDC}
+                {bcolors.OKGREEN}1) Continue with old settings{bcolors.ENDC}
+                {bcolors.WARNING}2) Remove old settings and start afresh{bcolors.ENDC}""")
             rst = input("Please enter your choice number: ")
         if rst == "1":
+            print(f"{bcolors.OKGREEN}Starting with old settings...........{bcolors.ENDC}")
             cfile = open(cfgFile, "r")
             cdata = cfile.read().splitlines()
             filter_s = cdata[0].split(",")
@@ -74,7 +77,7 @@ def smsforward(looping=False):
             print(f"{bcolors.WARNING}Removing old Configuration files..........{bcolors.ENDC}")
             os.remove(cfgFile)
             os.remove(tmpFile)
-            print(f"{bcolors.OKCYAN}Old configuration files removed. Please enter new settings{bcolors.ENDC}")
+            print(f"{bcolors.WARNING}Old configuration files removed. Please enter new settings{bcolors.ENDC}")
             smsforward()
 
     # Chcking last saved forward time
