@@ -6,7 +6,7 @@ import time
 
 interV = 15  # Script repeat interval in seconds
 looper = False  # variable for deciding looping mechanisam
-print(f"Welcome to SMS forwarder v:1.1 by")
+print(f"Welcome to SMS Forwarder v:1.1 by")
 print('''
 
  ██████╗██╗     ██╗ ██████╗██╗  ██╗███████╗                           
